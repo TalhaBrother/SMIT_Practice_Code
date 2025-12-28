@@ -1,0 +1,13 @@
+alert ("Thankyou for visiting my site");
+let ques1=prompt("Enter your first number",);
+let ques2=prompt("Enter your second number",);
+let ques3=Number(ques1);
+let ques4=Number(ques2);
+let sum= ques3 + ques4;
+let diff= ques3 - ques4;
+let mul= ques3 * ques4;
+let div= ques3 / ques4;
+alert("The sum of the given numbers is: "+sum);
+alert("The difference of the given numbers is: "+diff);
+alert("The product of the given numbers is: "+mul);
+alert("The division of the given numbers is: "+div);

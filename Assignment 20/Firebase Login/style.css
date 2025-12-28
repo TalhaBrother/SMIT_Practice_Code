@@ -1,0 +1,63 @@
+.container h1{
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 2rem;
+
+}
+.container{
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 70vh;
+    background-color: bisque;
+    padding: 2rem;
+    align-items: center;
+    
+}
+#email{
+    padding: 0.8rem;
+    width: 80%;
+    border: none;
+    margin-bottom: 0.8rem ;
+    font-size: 1rem;
+}
+#password{
+    padding: 0.8rem;
+    width: 80%;
+    border: none;
+    margin-bottom: 0.8rem ;
+    font-size: 1rem;
+}
+#signup{
+    padding: 0.8rem;
+    width: 50%;
+    border: none;
+    margin-bottom: 0.8rem ;
+    font-size: 1rem;
+    align-items: center;
+    background-color: blue;
+}
+#loginemail{
+    padding: 0.8rem;
+    width: 80%;
+    border: none;
+    margin-bottom: 0.8rem ;
+    font-size: 1rem;
+}
+#loginpassword{
+    padding: 0.8rem;
+    width: 80%;
+    border: none;
+    margin-bottom: 0.8rem ;
+    font-size: 1rem;
+}
+#login{
+    padding: 0.8rem;
+    width: 50%;
+    border: none;
+    margin-bottom: 0.8rem ;
+    font-size: 1rem;
+    align-items: center;
+    background-color: blue;
+}
