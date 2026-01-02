@@ -4,26 +4,32 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Pagination from '@mui/material/Pagination';
 import axios from 'axios'
-import { useQueryClient,useQuery } from '@tanstack/react-query'
+import { useQueryClient,useQuery, keepPreviousData } from '@tanstack/react-query'
 
 function App() {
+  const [pageNum,setPageNum]=useState(1)
+  const [skip,setSkip]=useState(0)
+  const [search,setSearch]=useState(null)
+  const Page_Limit=10;
     const queryClient = useQueryClient()
   let fetchData = async () => {
-    let response=await axios.get("https://dummyjson.com/products?limit=0&skip=0")
-    return response.data.products
+    let response=await axios.get(search?`https://dummyjson.com/products/search?q=${search}&limit=${Page_Limit}&skip=${skip}`:`https://dummyjson.com/products?limit=${Page_Limit}&skip=${skip}`)
+    return response.data
   
   }
   const{data}=useQuery({
-    queryKey:['products'],
-    queryFn: fetchData
+    queryKey:['products',skip,search],
+    queryFn: fetchData,
+    placeholderData:keepPreviousData
   })
  console.log(data);
   return (
     <>
     <div >
-   {data?.map((item)=>{
+    <input type="text" placeholder='Search...' onChange={(e)=>setSearch(e.target.value)}/>
+   {data?.products?.map((item)=>{
     return (
-    <div >
+    <div key={item.id}> 
       <section className="text-gray-600 body-font">
   <div className="container px-5 py-24 mx-auto">
     <div className="flex flex-wrap -m-4">
@@ -52,7 +58,13 @@ function App() {
     </div>
    )})}
     <div>
-     <Pagination/>
+     <Pagination
+     count={data? Math.ceil(data?.total / Page_Limit):1}
+    onChange={(e,page)=>{
+      setPageNum(page)
+      setSkip((page-1)*Page_Limit)
+    }}
+     />
     </div>
     </div>
     </>
